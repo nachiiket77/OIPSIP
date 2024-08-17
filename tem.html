@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temperature Converter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #000; /* Black background */
+            color: gold; /* Gold font color */
+        }
+        .converter, .current-info {
+            background-color: #222; /* Dark background for elements */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            margin-bottom: 20px;
+            width: 300px;
+        }
+        .converter input, .converter select, .converter button {
+            margin-bottom: 10px;
+            width: 100%;
+            padding: 8px;
+            border-radius: 4px;
+            border: 1px solid gold; /* Gold border */
+            background-color: #444; /* Darker background for inputs and buttons */
+            color: gold; /* Gold font color */
+        }
+        .converter button {
+            background-color: gold; /* Gold button background */
+            color: #000; /* Black text on buttons */
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .converter button:hover {
+            background-color: #e6ac00; /* Darker gold on hover */
+        }
+        .result, .current-info {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        .pulsing-dot {
+            margin: 20px auto;
+            width: 16px;
+            height: 16px;
+            background-color: gold; /* Gold color for pulsing dot */
+            border-radius: 50%;
+            animation: pulse 1s infinite;
+            display: none;
+        }
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1.5);
+                opacity: 0.5;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="current-info">
+    <div id="current-time"></div>
+    <div id="current-location-temp"></div>
+</div>
+
+<div class="converter">
+    <input type="text" id="temperature" placeholder="Enter temperature">
+    <select id="fromUnit">
+        <option value="Celsius">Celsius</option>
+        <option value="Fahrenheit">Fahrenheit</option>
+        <option value="Kelvin">Kelvin</option>
+    </select>
+    <select id="toUnit">
+        <option value="Celsius">Celsius</option>
+        <option value="Fahrenheit">Fahrenheit</option>
+        <option value="Kelvin">Kelvin</option>
+    </select>
+    <button onclick="convertTemperature()">Convert</button>
+    <button onclick="resetFields()">Reset</button>
+    <div id="spinner" class="pulsing-dot"></div>
+    <div id="result" class="result"></div>
+</div>
+
+<script>
+    function updateTime() {
+        const currentTimeDiv = document.getElementById('current-time');
+        const now = new Date();
+        currentTimeDiv.textContent = `Current Time: ${now.toLocaleTimeString()}`;
+    }
+    setInterval(updateTime, 1000);
+
+    function getCurrentLocationTemperature() {
+        const locationTempDiv = document.getElementById('current-location-temp');
+        
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(position => {
+                const lat = position.coords.latitude;
+                const lon = position.coords.longitude;
+                
+                const apiKey = 'YOUR_API_KEY';
+                const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`;
+
+                fetch(url)
+                    .then(response => response.json())
+                    .then(data => {
+                        const temperature = data.main.temp;
+                        const locationName = data.name;
+                        locationTempDiv.textContent = `Current Temperature in ${locationName}: ${temperature.toFixed(1)} °C`;
+                    })
+                    .catch(error => {
+                        locationTempDiv.textContent = 'Unable to retrieve weather data';
+                    });
+            });
+        } else {
+            locationTempDiv.textContent = 'Geolocation is not supported by this browser';
+        }
+    }
+
+    getCurrentLocationTemperature();
+
+    function convertTemperature() {
+        const tempInput = document.getElementById('temperature').value;
+        const fromUnit = document.getElementById('fromUnit').value;
+        const toUnit = document.getElementById('toUnit').value;
+        const resultDiv = document.getElementById('result');
+        const spinner = document.getElementById('spinner');
+
+        const temperature = parseFloat(tempInput);
+        if (isNaN(temperature)) {
+            resultDiv.textContent = 'Please enter a valid number';
+            return;
+        }
+
+        spinner.style.display = 'block';
+        resultDiv.textContent = '';
+
+        setTimeout(() => {
+            let celsius;
+
+            if (fromUnit === 'Celsius') {
+                celsius = temperature;
+            } else if (fromUnit === 'Fahrenheit') {
+                celsius = (temperature - 32) * 5/9;
+            } else if (fromUnit === 'Kelvin') {
+                celsius = temperature - 273.15;
+            }
+
+            let convertedTemp;
+
+            if (toUnit === 'Celsius') {
+                convertedTemp = celsius;
+            } else if (toUnit === 'Fahrenheit') {
+                convertedTemp = (celsius * 9/5) + 32;
+            } else if (toUnit === 'Kelvin') {
+                convertedTemp = celsius + 273.15;
+            }
+
+            spinner.style.display = 'none';
+            resultDiv.textContent = `Converted Temperature: ${convertedTemp.toFixed(2)} ${toUnit}`;
+        }, 1000);
+    }
+
+    function resetFields() {
+        document.getElementById('temperature').value = '';
+        document.getElementById('fromUnit').value = 'Celsius';
+        document.getElementById('toUnit').value = 'Celsius';
+        document.getElementById('result').textContent = '';
+        document.getElementById('spinner').style.display = 'none';
+    }
+</script>
+
+</body>
+</html>

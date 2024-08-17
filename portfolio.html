@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Nachiket Ajmera</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #000;
+            color: #fff;
+        }
+
+        header {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            padding: 20px 50px;
+            background-color: #111;
+        }
+
+        header h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-right: 50px;
+            color: #f39c12;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            animation: fadeIn 1s ease-in-out 0.5s;
+            animation-fill-mode: both;
+        }
+
+        nav a {
+            margin-left: 20px;
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+            overflow: hidden;
+        }
+
+        nav a:hover {
+            color: #f39c12;
+        }
+
+        /* LinkedIn Animation */
+        .linkedin {
+            display: flex;
+            align-items: center;
+            margin-left: 20px;
+            text-decoration: none;
+            color: #fff;
+            font-weight: 500;
+            transition: color 0.3s ease-in-out;
+            animation: slideIn 1s ease-in-out 1s;
+            animation-fill-mode: both;
+        }
+
+        .linkedin img {
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .linkedin:hover img {
+            transform: scale(1.2);
+        }
+
+        .linkedin:hover {
+            color: #f39c12;
+        }
+
+        .hero {
+            display: flex;
+            justify-content: space-between;
+            padding: 50px;
+            background-color: #222;
+            animation: fadeIn 1s ease-in-out 1.5s;
+            animation-fill-mode: both;
+        }
+
+        .hero img {
+            border-radius: 10px;
+            max-width: 300px;
+        }
+
+        .hero-text {
+            max-width: 50%;
+        }
+
+        .hero h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #f39c12;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            color: #ddd;
+        }
+
+        .hero a {
+            padding: 10px 20px;
+            background-color: #f39c12;
+            color: #fff;
+            text-decoration: none;
+            font-weight: 700;
+            border-radius: 5px;
+        }
+
+        .education, .skills, .projects, .contact {
+            padding: 50px;
+            background-color: #000;
+        }
+
+        .education h3, .skills h3, .projects h3, .contact h3 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #f39c12;
+            animation: fadeIn 1s ease-in-out 2s;
+            animation-fill-mode: both;
+        }
+
+        .education p, .skills p, .projects p, .contact p {
+            font-size: 1.25rem;
+            line-height: 1.6;
+            color: #ddd;
+        }
+
+        .skills-grid, .projects-grid {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            animation: fadeIn 1s ease-in-out 2.5s;
+            animation-fill-mode: both;
+        }
+
+        .skill-item, .project-item {
+            background-color: #111;
+            padding: 20px;
+            margin: 10px;
+            border-radius: 5px;
+            flex-basis: 30%;
+            text-align: center;
+            color: #f39c12;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .skill-item:hover, .project-item:hover {
+            transform: translateY(-5px);
+        }
+
+        footer {
+            padding: 20px 50px;
+            background-color: #111;
+            text-align: center;
+            animation: fadeIn 1s ease-in-out 3s;
+            animation-fill-mode: both;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 1rem;
+            color: #bbb;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        @keyframes slideIn {
+            0% { transform: translateX(-100%); opacity: 0; }
+            100% { transform: translateX(0); opacity: 1; }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .hero img {
+                max-width: 100%;
+                margin-bottom: 30px;
+            }
+
+            .hero-text {
+                max-width: 100%;
+            }
+
+            .skills-grid, .projects-grid {
+                flex-direction: column;
+            }
+
+            .skill-item, .project-item {
+                flex-basis: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Nachiket Ajmera</h1>
+    <nav>
+        <a href="#">Skills</a>
+        <a href="#">Projects</a>
+        <a href="#">Contact</a>
+        <a class="linkedin" href="https://www.linkedin.com/in/your-profile-link" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png" alt="LinkedIn">
+            LinkedIn
+        </a>
+    </nav>
+</header>
+
+<section class="hero">
+    <div class="hero-text">
+        <h2>Fresher based in Mumbai</h2>
+        <p>I am a passionate web developer with a focus on front-end development and a keen interest in UI/UX design. I am eager to contribute my skills to a dynamic team.</p>
+        <a href="#">Learn More</a>
+    </div>
+    <img src="profile.jpg" alt="Fresher Profile Picture">
+</section>
+
+<section class="education">
+    <h3>Education</h3>
+    <p>Bachelor in Engineering, University of Mumbai (2027)</p>
+    <p>Certification in Front-End Web Development, Udemy (2024)</p>
+</section>
+
+<section class="skills">
+    <h3>Skills</h3>
+    <div class="skills-grid">
+        <div class="skill-item">
+            <h4>HTML & CSS</h4>
+            <p>Proficient in creating responsive layouts and styling web pages.</p>
+        </div>
+        <div class="skill-item">
+            <h4>JavaScript</h4>
+            <p>Experience in building interactive web applications.</p>
+        </div>
+        <div class="skill-item">
+            <h4>UI/UX Design</h4>
+            <p>Knowledgeable in design principles and user-centered design.</p>
+        </div>
+    </div>
+</section>
+
+<section class="projects">
+    <h3>Projects</h3>
+    <div class="projects-grid">
+        <div class="project-item">
+            <h4>Portfolio Website</h4>
+            <p>A personal portfolio website showcasing my skills and projects.</p>
+        </div>
+        <div class="project-item">
+            <h4>Todo List App</h4>
+            <p>A simple yet functional todo list app built with HTML, CSS, and JavaScript.</p>
+        </div>
+        <div class="project-item">
+            <h4>Blog Design</h4>
+            <p>A blog template designed with a focus on readability and user experience.</p>
+        </div>
+    </div>
+</section>
+
+<section class="contact">
+    <h3>Contact Me</h3>
+    <p>If you would like to connect or discuss opportunities, feel free to reach out at nachiket.ajmera@gmail.com.</p>
+</section>
+
+<footer>
+    <p>&copy; 2024 Nachiket Ajmera. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
