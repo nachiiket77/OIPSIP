@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TATA PLAY - Landing Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            color: #333;
+        }
+
+        header {
+            background-color: #170bf8b0;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header img {
+            max-height: 50px;
+        }
+
+        .nav-links a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: #333;
+        }
+
+        .hero {
+            background: #e0e0e0 url('banner.jpg') no-repeat center center/cover;
+            padding: 100px 20px;
+            text-align: center;
+            color: #333;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 20px;
+        }
+
+        .hero .cta-button {
+            background-color: #ff0000;
+            color: white;
+            padding: 10px 25px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .features {
+            display: flex;
+            justify-content: space-around;
+            padding: 50px 20px;
+            background-color: #f9f9f9;
+        }
+
+        .feature {
+            text-align: center;
+            max-width: 300px;
+        }
+
+        .feature img {
+            max-height: 150px;
+            margin-bottom: 20px;
+        }
+
+        .feature h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .feature p {
+            font-size: 1rem;
+        }
+
+        .coverage {
+            padding: 50px 20px;
+            text-align: center;
+            background-color: #e0e0e0;
+        }
+
+        .coverage img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 20px;
+        }
+
+        .coverage h2 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .coverage .stats {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+
+        .coverage .stats div {
+            text-align: center;
+        }
+
+        footer {
+            background-color: #e60f0f;
+            color: rgba(1, 41, 186, 0.745);
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        @media (max-width: 768px) {
+            .features {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .coverage .stats {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <img src="tataplaylogo.jpg" alt="TATA PLAY Logo">
+    <nav class="nav-links">
+        <a href="#">Home</a>
+        <a href="#">Packages</a>
+        <a href="#">Offers</a>
+        <a href="#">Contact</a>
+    </nav>
+</header>
+
+<section class="hero">
+    <h1>Experience Entertainment Like Never Before</h1>
+    <p>Join TATA PLAY - Your gateway to unlimited entertainment</p>
+    <a href="#" class="cta-button">Get TATA PLAY</a>
+</section>
+
+<section class="features">
+    <div class="feature">
+        <img src="Variety.jpg" alt="Variety of Channels">
+        <h3>Variety of Channels</h3>
+        <p>Access hundreds of channels across various genres.</p>
+    </div>
+    <div class="feature">
+        <img src="package.jpg" alt="Affordable Packages">
+        <h3>Affordable Packages</h3>
+        <p>Choose from a range of budget-friendly plans.</p>
+    </div>
+    <div class="feature">
+        <img src="multi.jpg" alt="Multi-Device Support">
+        <h3>Multi-Device Support</h3>
+        <p>Watch on TV, mobile, or your favorite streaming device.</p>
+    </div>
+</section>
+
+<section class="coverage">
+    <h2>Available Nationwide</h2>
+    <img src="map.jpg" alt="India Map">
+    <div class="stats">
+        <div>
+            <h3>500+</h3>
+            <p>Cities Covered</p>
+        </div>
+        <div>
+            <h3>200+</h3>
+            <p>Channels Offered</p>
+        </div>
+        <div>
+            <h3>24/7</h3>
+            <p>Customer Support</p>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <p>&copy; 2024 TATA PLAY. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
